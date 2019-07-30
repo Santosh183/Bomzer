@@ -10,6 +10,15 @@ td,th {
     background: #7490b4;
 
 }
+/*
+.mouser-data {
+    background:#b3a797
+
+}
+.digikey-data {
+    background: #a4b0be;
+
+}*/
 .top-heading {
     th{
         border:none;
@@ -38,4 +47,7 @@ tr.button {
 }
 tr.button:hover {
     background: white;
+}
+.quantity {
+    width: 78px;
 }

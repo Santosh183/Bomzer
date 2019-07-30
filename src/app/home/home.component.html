@@ -12,36 +12,25 @@
         <th>Part No.</th>
         <th>Quantity</th>
         <th>Manufacturer</th>
-        <th>Price</th>
+        <th>Price/Unit</th>
         <th>Stock Available</th>
         <th>Lead Time</th>
-        <th>Price</th>
+        <th>Price/Unit</th>
         <th>Stock Available</th>
         <th>Lead Time</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td> <input placeholder="part number" type="text"> </td>
-        <td><input placeholder="quantity" type="number"> </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-      </tr>
-      <tr *ngIf="ifAddForm">
-        <td> <input placeholder="part number" type="text"> </td>
-        <td><input placeholder="quantity" type="number"> </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
-        <td>1ss </td>
+    <tbody> 
+      <tr *ngFor="let row of rows; let i = index">
+        <td> <input placeholder="Add Mfg. Part#/SKU" [(ngModel)]="row.partNumber" (keyup.enter)="fetchValues(row.partNumber)" type="text"> </td>
+        <td ><input class="quantity" placeholder="quantity" value="1" [(ngModel)]="row.quantity" (change)="updatePrice(row.partNumber)" (keyup)="updatePrice(row.partNumber)" type="number"> </td>
+        <td>{{row.manufacturer}}</td>
+        <td class="mouser-data">{{row.mouser?.price}}</td>
+        <td class="mouser-data">{{row.mouser?.availableQuantity}} </td>
+        <td class="mouser-data">{{row.mouser?.leadTime}}</td>
+        <td class="digikey-data">{{row.digikey?.price}}</td>
+        <td class="digikey-data">{{row.digikey?.availableQuantity}}</td>
+        <td class="digikey-data">{{row.digikey?.leadTime}}</td>
       </tr>
       <tr class="button">
         <td colspan="9">
