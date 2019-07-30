@@ -1,0 +1,41 @@
+td,th {
+    padding: 10px 5px;
+    text-align: center;
+}
+.mouser {
+    background:#9e815c
+
+}
+.digikey {
+    background: #7490b4;
+
+}
+.top-heading {
+    th{
+        border:none;
+        text-align: center;
+    }
+}
+.sub-heading {
+    th {
+        border-top: none;
+        text-align: center;
+    }
+    background: #dadfe4;
+}
+tbody{
+    tr {
+        padding: 10px 0px;
+    }
+}
+tr.button {
+    td {
+        text-align: left;
+        div {
+            margin-left: 2rem;
+        }
+    }
+}
+tr.button:hover {
+    background: white;
+}

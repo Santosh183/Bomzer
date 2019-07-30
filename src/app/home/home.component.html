@@ -1,0 +1,55 @@
+<div class="table-responsive">        
+  <table class="table table-hover">
+    <thead>
+      <tr class="top-heading">
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="mouser" colspan="3">Mouser </th>
+        <th class="digikey" colspan="3">Digikey</th>
+      </tr>
+      <tr class="sub-heading">
+        <th>Part No.</th>
+        <th>Quantity</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+        <th>Stock Available</th>
+        <th>Lead Time</th>
+        <th>Price</th>
+        <th>Stock Available</th>
+        <th>Lead Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <input placeholder="part number" type="text"> </td>
+        <td><input placeholder="quantity" type="number"> </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+      </tr>
+      <tr *ngIf="ifAddForm">
+        <td> <input placeholder="part number" type="text"> </td>
+        <td><input placeholder="quantity" type="number"> </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+        <td>1ss </td>
+      </tr>
+      <tr class="button">
+        <td colspan="9">
+          <div class="col-6">
+            <button class=" btn btn-md btn-info"(click)="addPart()" >+ Add Part</button>
+          </div>  
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
