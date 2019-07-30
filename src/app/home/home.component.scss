@@ -51,3 +51,48 @@ tr.button:hover {
 .quantity {
     width: 78px;
 }
+.custom-nav {
+    background: #000;
+    height:70px;
+    .search-box input {
+        height: 30px;
+        margin-top: 2.5rem;
+        margin-right: 2rem;
+        border-radius: 4px;
+        width: 300px;
+        text-indent: 10px;
+    }
+    .logo {
+        font-size: 30px;
+        color:white;
+        margin-top: 1.4rem;
+        margin-left: 3rem;margin-top: 1.4rem;
+        margin-left: 3rem;
+    }
+
+}
+.span-search {
+    font-size: 20px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    opacity: 0.6;
+}
+.margin-temp {
+    margin-top: 250px;
+    margin-bottom: 20px;
+}
+.top-heading {
+    button {
+        width: 150px;
+        height: 40px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    th {
+        vertical-align: middle;
+    }
+}
+body {
+    font-size: 20px;
+}

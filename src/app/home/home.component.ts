@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     }
 
   }
-  fetchValues(pNumber: string) {
+  fetchValues(pNumber: string, isGlobalSearch: boolean) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -50,20 +50,22 @@ export class HomeComponent implements OnInit {
     this.http.post('https://api.mouser.com/api/v1/search/partnumber?apiKey=3bef6d5b-61bc-4b30-8e02-ddc2c7b2b567', body,
       httpOptions).subscribe((data) => {
         console.dir(data);
-        this.updateMouserValues(pNumber, data);
+        this.updateMouserValues(pNumber, data, isGlobalSearch);
       }, error => {
         console.log(error);
       });
   }
-  updateMouserValues(pNumber: string, data: any) {
+  updateMouserValues(pNumber: string, data: any, isGlobalSearch: boolean) {
     for(let i =0;i<this.rows.length;i++) {
-      if(pNumber == this.rows[i].partNumber) {
+      if((pNumber == this.rows[i].partNumber) || isGlobalSearch) {
         this.rows[i].mouser = {
           price: '',
           availableQuantity: '',
           leadTime: '',
           priceBreakUp: []
         };
+        
+        this.rows[i].partNumber = pNumber;
         this.rows[i].quantity = 1;
         this.rows[i].manufacturer = data.SearchResults.Parts[0].Manufacturer;
         this.rows[i].mouser.availableQuantity = data.SearchResults.Parts[0].Availability;

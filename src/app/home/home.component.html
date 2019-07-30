@@ -1,8 +1,23 @@
-<div class="table-responsive">        
+<div class="custom-nav clearfix">
+  <div class="logo float-left">
+    <span>BOMZER</span>
+  </div>
+  <div class="search-box float-right">
+    <input type="text" placeholder="Search by part number or SKU" (keyup.enter)="fetchValues($event.target.value,true)">
+    <span (click)="fetchValues($event.target.value,true)" class="span-search glyphicon glyphicon-search"></span>
+  </div>
+</div>
+<div class="table-responsive table-bordered margin-temp">        
   <table class="table table-hover">
     <thead>
       <tr class="top-heading">
-        <th></th>
+        <th>
+            <div class="button ">
+              <div class="col-6">
+                <button class=" btn btn-md btn-info"(click)="addPart()" >+ Add Part</button>
+              </div>  
+            </div>
+        </th>
         <th></th>
         <th></th>
         <th class="mouser" colspan="3">Mouser </th>
@@ -22,7 +37,7 @@
     </thead>
     <tbody> 
       <tr *ngFor="let row of rows; let i = index">
-        <td> <input placeholder="Add Mfg. Part#/SKU" [(ngModel)]="row.partNumber" (keyup.enter)="fetchValues(row.partNumber)" type="text"> </td>
+        <td> <input placeholder="Add Mfg. Part#/SKU" [(ngModel)]="row.partNumber" (keyup.enter)="fetchValues(row.partNumber,false)" type="text"> </td>
         <td ><input class="quantity" placeholder="quantity" value="1" [(ngModel)]="row.quantity" (change)="updatePrice(row.partNumber)" (keyup)="updatePrice(row.partNumber)" type="number"> </td>
         <td>{{row.manufacturer}}</td>
         <td class="mouser-data">{{row.mouser?.price}}</td>
@@ -31,13 +46,6 @@
         <td class="digikey-data">{{row.digikey?.price}}</td>
         <td class="digikey-data">{{row.digikey?.availableQuantity}}</td>
         <td class="digikey-data">{{row.digikey?.leadTime}}</td>
-      </tr>
-      <tr class="button">
-        <td colspan="9">
-          <div class="col-6">
-            <button class=" btn btn-md btn-info"(click)="addPart()" >+ Add Part</button>
-          </div>  
-        </td>
       </tr>
     </tbody>
   </table>
