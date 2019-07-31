@@ -24,6 +24,9 @@ td,th {
     background: #17c2d5;
     color: white;
     font-size: 18px;
+    div {
+        display: inline-block;
+    }
     th{
         border:none;
         text-align: center;
