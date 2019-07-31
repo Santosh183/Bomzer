@@ -1,5 +1,5 @@
 <div class="search-main col-12">
-    <input (keyup.enter)="fetchValues($event.target.value)" placeholder="Enter Part Number#" type="text">
+    <input (keyup.enter)="fetchValues($event.target.value)" placeholder="Search by Part number or SKU" type="text">
     <span (click)="fetchValues($event.target.value)" class="glyphicon glyphicon-search"></span>
 </div>
 <div *ngIf="showDetails" class="data-container">
@@ -9,23 +9,28 @@
         </div>
         <div class="main-data float-left">
             <div>
-                <span class="heading">Part NO: </span>{{partData.ManufacturerPartNumber}}
+                <span class="heading">Part No: </span>{{partData.ManufacturerPartNumber}}
             </div>
             <div>
-                <span class="heading">Part description: </span> 
+                <span class="heading">Part Description: </span> 
                 {{partData.Description}}
+            </div>            
+            <div > <span class="heading">Price/Unit: </span>
+                {{partData.PriceBreaks[0].Price}}
+            </div>            
+            <div > <span class="heading"> Manufacturer: 
+                 </span> {{partData.Manufacturer}}
             </div>
         </div>
     </div>
-    <div class="info"> <span class="heading"> Manufacturer:  </span> {{partData.Manufacturer}}</div>
     <div class="info"> <span class="heading"> Category: </span> {{partData.Category}}</div>
-    <div class="info"> <span class="heading"> Detailed Pdf:  </span> 
-       <a  href="{{partData.DataSheetUrl}}" target="_blank"> details.pdf</a>
+    <div class="info"> <span class="heading"> Datasheet:  </span> 
+       <a  href="{{partData.DataSheetUrl}}" target="_blank">{{partData.DataSheetUrl}}</a>
     </div>
-    <div class="info"> <span class="heading"> Visit Supplier :</span>
-        <a  href="{{partData.ProductDetailUrl}}" target="_blank">visitwebsite</a>
+    <div class="info"> <span class="heading"> Supplier Website:  </span>
+        <a  href="{{partData.ProductDetailUrl}}" target="_blank">{{partData.ProductDetailUrl}}</a>
     </div>
-    <div class="info"> <span class="heading">Price/Unit :</span>
-        {{partData.PriceBreaks[0].Price}}
+    <div class="info"> <span class="heading">Lead Time: </span>
+        {{partData.LeadTime}}
     </div>
 </div>

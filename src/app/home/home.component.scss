@@ -1,12 +1,12 @@
 .search-main {
     margin-left: 30%;
-    margin-top:20px;
+    margin-top:130px;
     width: 40%;
     position: relative;
     input {
         display: inline-block;
         width: 100%;
-        height: 40px;
+        height: 55px;
         border-radius: 10px;
         border: 2px solid #dad3d3;
         font-size: 25px;
@@ -14,18 +14,28 @@
     }
     .glyphicon {
         position: absolute;
-        right: 25px;
-        font-size: 17px;
-        top: 10px;
-        color:#dad3d3;
+        right: 30px;
+        font-size: 21px;
+        top: 15px;
+        color: #dad3d3;
     }
     input:focus {
         border-radius: 10px;
-        border: 2px solid #dad3d3;
+        outline: none;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-size: 18px;
+        opacity: 0.6;
+        padding-left: 5px;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+        font-size: 18px;
+        opacity: 0.6;
+        padding-left: 5px;
     }
 }
 .data-container {
-    height: 500px;
+    height: 400px;
     overflow: auto;
     font-size: 18px;
     opacity: 0.8;
@@ -43,4 +53,9 @@ span.heading {
 .info {
     clear:both;
     padding: 10px;
+}
+.main-data {
+    div {
+        padding: 2.5px 0px;
+    }
 }

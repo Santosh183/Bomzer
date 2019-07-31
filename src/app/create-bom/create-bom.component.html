@@ -28,7 +28,7 @@
     </thead>
     <tbody> 
       <tr *ngFor="let row of rows; let i = index">
-        <td> <input placeholder="Add Mfg. Part#/SKU" [(ngModel)]="row.partNumber" (keyup.enter)="fetchValues(row.partNumber,false)" type="text"> </td>
+        <td> <input placeholder="Add Part No" [(ngModel)]="row.partNumber" (keyup.enter)="fetchValues(row.partNumber,false)" type="text"> </td>
         <td ><input class="quantity" placeholder="quantity" value="1" [(ngModel)]="row.quantity" (change)="updatePrice(row.partNumber)" (keyup)="updatePrice(row.partNumber)" type="number"> </td>
         <td>{{row.manufacturer}}</td>
         <td class="mouser-data">{{row.mouser?.price}}</td>
