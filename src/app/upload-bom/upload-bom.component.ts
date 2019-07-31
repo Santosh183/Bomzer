@@ -28,6 +28,7 @@ export class UploadBomComponent implements OnInit {
 
 
   Upload() {
+    this.rows = [];
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
