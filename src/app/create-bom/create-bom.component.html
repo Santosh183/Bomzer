@@ -1,0 +1,43 @@
+<div class="table-responsive table-bordered margin-temp">        
+  <table class="table table-hover">
+    <thead>
+      <tr class="top-heading">
+        <th>
+            <div class="button ">
+              <div class="col-6">
+                <button class=" btn btn-md btn-info"(click)="addPart()" >+ Add Part</button>
+              </div>  
+            </div>
+        </th>
+        <th></th>
+        <th></th>
+        <th class="mouser" colspan="3">Mouser </th>
+        <th class="digikey" colspan="3">Digikey</th>
+      </tr>
+      <tr class="sub-heading">
+        <th>Part No.</th>
+        <th>Quantity</th>
+        <th>Manufacturer</th>
+        <th>Price/Unit</th>
+        <th>Stock Available</th>
+        <th>Lead Time</th>
+        <th>Price/Unit</th>
+        <th>Stock Available</th>
+        <th>Lead Time</th>
+      </tr>
+    </thead>
+    <tbody> 
+      <tr *ngFor="let row of rows; let i = index">
+        <td> <input placeholder="Add Mfg. Part#/SKU" [(ngModel)]="row.partNumber" (keyup.enter)="fetchValues(row.partNumber,false)" type="text"> </td>
+        <td ><input class="quantity" placeholder="quantity" value="1" [(ngModel)]="row.quantity" (change)="updatePrice(row.partNumber)" (keyup)="updatePrice(row.partNumber)" type="number"> </td>
+        <td>{{row.manufacturer}}</td>
+        <td class="mouser-data">{{row.mouser?.price}}</td>
+        <td class="mouser-data">{{row.mouser?.availableQuantity}} </td>
+        <td class="mouser-data">{{row.mouser?.leadTime}}</td>
+        <td class="digikey-data">{{row.digikey?.price}}</td>
+        <td class="digikey-data">{{row.digikey?.availableQuantity}}</td>
+        <td class="digikey-data">{{row.digikey?.leadTime}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

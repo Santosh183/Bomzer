@@ -1,1 +1,12 @@
-<app-home></app-home>
+<div class="custom-nav clearfix">
+    <div class="logo float-left">
+        <span [routerLink]="['/home']">BOMZER</span>
+    </div>
+    <div class="search-box float-right">
+        <input type="text" placeholder="Search by part number or SKU" >
+        <span  class="span-search glyphicon glyphicon-search"></span>
+    </div>
+</div>
+<app-side-nav></app-side-nav>
+<!-- (keyup.enter)="fetchValues($event.target.value,true)" (click)="fetchValues($event.target.value,true)" -->
+<router-outlet></router-outlet>

@@ -1,0 +1,38 @@
+.custom-nav {
+    background: #000;
+    height:70px;
+    .search-box input {
+        height: 30px;
+        margin-top: 2.5rem;
+        margin-right: 2rem;
+        border-radius: 4px;
+        width: 300px;
+        text-indent: 10px;
+    }
+    .logo {
+        font-size: 30px;
+        color:white;
+        margin-top: 1.4rem;
+        margin-left: 3rem;margin-top: 1.4rem;
+        margin-left: 3rem;
+        cursor: pointer;
+    }
+
+}
+.span-search {
+    font-size: 20px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    opacity: 0.6;
+}
+app-side-nav {
+    width: 10%;
+    height: 100%;
+    float: left;
+    display: block;
+}
+router-outlet {
+    float: left;
+    display: block;
+}

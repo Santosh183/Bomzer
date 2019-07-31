@@ -1,0 +1,23 @@
+.side-nav {
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    transition:0.5s;
+    margin-top:70px;
+    background: black;
+    color:white;
+}
+ul {
+    list-style-type: none;
+    padding: 10px;
+    li {
+        padding: 20px 5px;
+        font-size: 15px;
+        font-weight: bold; 
+        cursor: pointer;       
+    }
+    li:hover {
+        background: #2c2b2b;
+    }
+}

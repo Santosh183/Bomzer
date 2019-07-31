@@ -1,98 +1,24 @@
-td,th {
-    padding: 10px 5px;
-    text-align: center;
-}
-.mouser {
-    background:#9e815c
-
-}
-.digikey {
-    background: #7490b4;
-
-}
-/*
-.mouser-data {
-    background:#b3a797
-
-}
-.digikey-data {
-    background: #a4b0be;
-
-}*/
-.top-heading {
-    th{
-        border:none;
-        text-align: center;
-    }
-}
-.sub-heading {
-    th {
-        border-top: none;
-        text-align: center;
-    }
-    background: #dadfe4;
-}
-tbody{
-    tr {
-        padding: 10px 0px;
-    }
-}
-tr.button {
-    td {
-        text-align: left;
-        div {
-            margin-left: 2rem;
-        }
-    }
-}
-tr.button:hover {
-    background: white;
-}
-.quantity {
-    width: 78px;
-}
-.custom-nav {
-    background: #000;
-    height:70px;
-    .search-box input {
-        height: 30px;
-        margin-top: 2.5rem;
-        margin-right: 2rem;
-        border-radius: 4px;
-        width: 300px;
-        text-indent: 10px;
-    }
-    .logo {
-        font-size: 30px;
-        color:white;
-        margin-top: 1.4rem;
-        margin-left: 3rem;margin-top: 1.4rem;
-        margin-left: 3rem;
-    }
-
-}
-.span-search {
-    font-size: 20px;
-    position: absolute;
-    right: 30px;
-    top: 30px;
-    opacity: 0.6;
-}
-.margin-temp {
-    margin-top: 250px;
-    margin-bottom: 20px;
-}
-.top-heading {
-    button {
-        width: 150px;
+.search-main {
+    margin-left: 30%;
+    margin-top:20px;
+    width: 40%;
+    position: relative;
+    input {
+        display: inline-block;
+        width: 100%;
         height: 40px;
+        border-radius: 10px;
+        border: 2px solid #dad3d3;
+    }
+    .glyphicon {
+        position: absolute;
+        right: 10px;
         font-size: 20px;
-        font-weight: 600;
+        top: 10px;
+        color:#dad3d3;
     }
-    th {
-        vertical-align: middle;
+    input:focus {
+        border-radius: 10px;
+        border: 2px solid #dad3d3;
     }
-}
-body {
-    font-size: 20px;
 }
