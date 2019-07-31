@@ -74,15 +74,15 @@ export class CreateBomComponent implements OnInit {
     for(let i =0;i<this.rows.length;i++) {
       if((pNumber == this.rows[i].partNumber) ) {
         this.rows[i].mouser = {
-          price: '',
-          availableQuantity: '',
-          leadTime: '',
+          price: 'NA',
+          availableQuantity: 'NA',
+          leadTime: 'NA',
           priceBreakUp: []
         };
         this.rows[i].digikey = {
-          price: '',
-          availableQuantity: '',
-          leadTime: '',
+          price: 'NA',
+          availableQuantity: 'NA',
+          leadTime: 'NA',
           priceBreakUp: []
         };
         this.rows[i].partNumber = data.partNumber;
@@ -95,8 +95,16 @@ export class CreateBomComponent implements OnInit {
           this.rows[i].mouser.price = data.mouser.priceBreakUp[0].price;
         }
         if ((data.digikey) && data.digikey.priceBreakUp.length > 0) {
-          this.rows[i].digikey.availableQuantity = data.digikey.availableQuantity;
-          this.rows[i].digikey.leadTime = data.digikey.leadTime;
+          if ( data.digikey.availableQuantity.toString() === '0') {
+            this.rows[i].digikey.availableQuantity = 'None';
+          } else {
+            this.rows[i].digikey.availableQuantity = data.digikey.availableQuantity + ' In Stock';
+          }
+          let temp = data.digikey.leadTime.split('weeks')[0].trim();
+          if (temp !== '') {
+            temp = parseInt(temp, 10) * 7 + ' Days';
+          }
+          this.rows[i].digikey.leadTime = temp;
           this.rows[i].digikey.priceBreakUp = data.digikey.priceBreakUp;
           this.rows[i].digikey.price = data.digikey.priceBreakUp[0].price;
         }

@@ -104,8 +104,17 @@ export class UploadBomComponent implements OnInit {
       this.row.mouser.priceBreakUp = data.mouser.priceBreakUp;
     }
     if ((data.digikey) && data.digikey.priceBreakUp.length > 0) {
-      this.row.digikey.availableQuantity = data.digikey.availableQuantity;
-      this.row.digikey.leadTime = data.digikey.leadTime;
+      if ( data.digikey.availableQuantity.toString() === '0') {
+        this.row.digikey.availableQuantity = 'None';
+      } else {
+        this.row.digikey.availableQuantity = data.digikey.availableQuantity + ' In Stock';
+      }
+      let temp = data.digikey.leadTime.split('weeks')[0].trim();
+      if (temp !== '') {
+        temp = parseInt(temp, 10) * 7 + ' Days';
+      }
+      this.row.digikey.leadTime = temp;
+
       this.row.digikey.priceBreakUp = data.digikey.priceBreakUp;
     }
 
