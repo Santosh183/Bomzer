@@ -1,8 +1,31 @@
-<div class="search-main">
+<div class="search-main col-12">
     <input (keyup.enter)="fetchValues($event.target.value)" placeholder="Enter Part Number#" type="text">
     <span (click)="fetchValues($event.target.value)" class="glyphicon glyphicon-search"></span>
 </div>
-<div *ngIf="partData" class="search-content">
-    {{JSON.stringify(partData)}}
-
+<div *ngIf="showDetails" class="data-container">
+    <div>
+        <div class="img  mr-5 float-left">
+            <img src="{{partData.ImagePath}}"  alt="">
+        </div>
+        <div class="main-data float-left">
+            <div>
+                <span class="heading">Part NO: </span>{{partData.ManufacturerPartNumber}}
+            </div>
+            <div>
+                <span class="heading">Part description: </span> 
+                {{partData.Description}}
+            </div>
+        </div>
+    </div>
+    <div class="info"> <span class="heading"> Manufacturer:  </span> {{partData.Manufacturer}}</div>
+    <div class="info"> <span class="heading"> Category: </span> {{partData.Category}}</div>
+    <div class="info"> <span class="heading"> Detailed Pdf:  </span> 
+       <a  href="{{partData.DataSheetUrl}}" target="_blank"> details.pdf</a>
+    </div>
+    <div class="info"> <span class="heading"> Visit Supplier :</span>
+        <a  href="{{partData.ProductDetailUrl}}" target="_blank">visitwebsite</a>
+    </div>
+    <div class="info"> <span class="heading">Price/Unit :</span>
+        {{partData.PriceBreaks[0].Price}}
+    </div>
 </div>

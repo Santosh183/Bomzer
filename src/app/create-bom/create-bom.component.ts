@@ -24,8 +24,14 @@ export class CreateBomComponent implements OnInit {
     for(let i =0;i<this.rows.length;i++) {
       if (pNumber == this.rows[i].partNumber) {
         for (let j = 0 ; j < this.rows[i].mouser.priceBreakUp.length; j++) {
-          if (this.rows[i].quantity < this.rows[i].mouser.priceBreakUp[j].Quantity) {
-            this.rows[i].mouser.price = this.rows[i].mouser.priceBreakUp[j].Price;
+          if (this.rows[i].quantity < this.rows[i].mouser.priceBreakUp[j].quantity) {
+            this.rows[i].mouser.price = this.rows[i].mouser.priceBreakUp[j].price;
+            break;
+          }
+        }
+        for (let j = 0 ; j < this.rows[i].digikey.priceBreakUp.length; j++) {
+          if (this.rows[i].quantity < this.rows[i].digikey.priceBreakUp[j].quantity) {
+            this.rows[i].digikey.price = this.rows[i].digikey.priceBreakUp[j].price;
             break;
           }
         }
@@ -41,21 +47,30 @@ export class CreateBomComponent implements OnInit {
         'Access-Control-Allow-Origin': '*'
       })
     };
+    /*
     const body = {
       SearchByPartRequest: {
         mouserPartNumber: pNumber
       }
-    };
+    }; */
 
+    this.http.get('http://ec2-3-94-187-199.compute-1.amazonaws.com/api/parts/getparts?partId=' + pNumber,
+    httpOptions).subscribe((data) => {
+      console.dir(data);
+      this.populateValues(pNumber, data);
+    }, error => {
+      console.log(error);
+    });
+    /*
     this.http.post('https://api.mouser.com/api/v1/search/partnumber?apiKey=3bef6d5b-61bc-4b30-8e02-ddc2c7b2b567', body,
       httpOptions).subscribe((data) => {
         console.dir(data);
         this.updateMouserValues(pNumber, data);
       }, error => {
         console.log(error);
-      });
+      }); */
   }
-  updateMouserValues(pNumber: string, data: any) {
+  populateValues(pNumber: string, data: any) {
     for(let i =0;i<this.rows.length;i++) {
       if((pNumber == this.rows[i].partNumber) ) {
         this.rows[i].mouser = {
@@ -64,14 +79,27 @@ export class CreateBomComponent implements OnInit {
           leadTime: '',
           priceBreakUp: []
         };
-        this.rows[i].partNumber = pNumber;
+        this.rows[i].digikey = {
+          price: '',
+          availableQuantity: '',
+          leadTime: '',
+          priceBreakUp: []
+        };
+        this.rows[i].partNumber = data.partNumber;
         this.rows[i].quantity = 1;
-        this.rows[i].manufacturer = data.SearchResults.Parts[0].Manufacturer;
-        this.rows[i].mouser.availableQuantity = data.SearchResults.Parts[0].Availability;
-        this.rows[i].mouser.leadTime = data.SearchResults.Parts[0].LeadTime;
-        this.rows[i].mouser.priceBreakUp = data.SearchResults.Parts[0].PriceBreaks;
-        this.rows[i].mouser.price = data.SearchResults.Parts[0].PriceBreaks[0].Price +
-        data.SearchResults.Parts[0].PriceBreaks[0].Currency;
+        this.rows[i].manufacturer = data.manufacturer;
+        if ( (data.mouser) && data.mouser.priceBreakUp.length > 0) {
+          this.rows[i].mouser.availableQuantity = data.mouser.availableQuantity;
+          this.rows[i].mouser.leadTime = data.mouser.leadTime;
+          this.rows[i].mouser.priceBreakUp = data.mouser.priceBreakUp;
+          this.rows[i].mouser.price = data.mouser.priceBreakUp[0].price;
+        }
+        if ((data.digikey) && data.digikey.priceBreakUp.length > 0) {
+          this.rows[i].digikey.availableQuantity = data.digikey.availableQuantity;
+          this.rows[i].digikey.leadTime = data.digikey.leadTime;
+          this.rows[i].digikey.priceBreakUp = data.digikey.priceBreakUp;
+          this.rows[i].digikey.price = data.digikey.priceBreakUp[0].price;
+        }
       }
     }
   }

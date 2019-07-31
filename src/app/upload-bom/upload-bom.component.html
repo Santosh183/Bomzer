@@ -1,3 +1,46 @@
-<p>
-  upload-bom works!
-</p>
+<div class="table-responsive table-bordered margin-temp">        
+    <table class="table table-hover">
+        <thead>
+        <tr class="top-heading">
+            <th>
+                <div class="button ">
+                <div class="col-12 p-0">
+                    <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file"
+                      accept=".xlsx">
+                    <button type="button" class="btn btn-info" (click)="Upload()">Upload</button>  
+                </div>  
+                </div>
+            </th>
+            <th></th>
+            <th></th>
+            <th class="mouser" colspan="3">Mouser </th>
+            <th class="digikey" colspan="3">Digikey</th>
+        </tr>
+        <tr class="sub-heading">
+            <th>Part No.</th>
+            <th>Quantity</th>
+            <th>Manufacturer</th>
+            <th>Price/Unit</th>
+            <th>Stock Available</th>
+            <th>Lead Time</th>
+            <th>Price/Unit</th>
+            <th>Stock Available</th>
+            <th>Lead Time</th>
+        </tr>
+        </thead>
+        <tbody> 
+        <tr *ngFor="let row of rows; let i = index">
+            <td>{{row.partNumber}}</td>
+            <td >{{row.quantity}}</td>
+            <td>{{row.manufacturer}}</td>
+            <td class="mouser-data">{{row.mouser?.price}}</td>
+            <td class="mouser-data">{{row.mouser?.availableQuantity}} </td>
+            <td class="mouser-data">{{row.mouser?.leadTime}}</td>
+            <td class="digikey-data">{{row.digikey?.price}}</td>
+            <td class="digikey-data">{{row.digikey?.availableQuantity}}</td>
+            <td class="digikey-data">{{row.digikey?.leadTime}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+      

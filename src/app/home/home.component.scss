@@ -9,11 +9,13 @@
         height: 40px;
         border-radius: 10px;
         border: 2px solid #dad3d3;
+        font-size: 25px;
+        padding:5px;
     }
     .glyphicon {
         position: absolute;
-        right: 10px;
-        font-size: 20px;
+        right: 25px;
+        font-size: 17px;
         top: 10px;
         color:#dad3d3;
     }
@@ -21,4 +23,24 @@
         border-radius: 10px;
         border: 2px solid #dad3d3;
     }
+}
+.data-container {
+    height: 500px;
+    overflow: auto;
+    font-size: 18px;
+    opacity: 0.8;
+    border:  2px solid #d6cccc;
+    padding: 15px;
+    margin: 20px;
+    margin-top: 40px;
+    background: #d3dbe2;
+
+}
+span.heading {
+    font-weight: bold;
+    font-size: 20px;
+}
+.info {
+    clear:both;
+    padding: 10px;
 }
