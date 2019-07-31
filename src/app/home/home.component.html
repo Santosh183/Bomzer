@@ -1,5 +1,14 @@
 <div class="search-main col-12">
-    <input (keyup.enter)="fetchValues($event.target.value)" placeholder="Search by Part number or SKU" type="text">
+    <input (keydown)="fetchOptions($event)"  aria-label="Number" matInput  [matAutocomplete]="auto"
+    (keyup.enter)="fetchValues($event.target.value)" placeholder="Search by Part number or SKU" type="text">
+<mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option">
+    {{option}}
+    </mat-option>
+</mat-autocomplete> 
+ 
+
+
     <span (click)="fetchValues($event.target.value)" class="glyphicon glyphicon-search"></span>
 </div>
 <div *ngIf="showDetails" class="data-container">

@@ -8,3 +8,10 @@ app-create-bom,app-upload-bom,app-home {
     display: block;
 
 }
+.mat-autocomplete-panel {
+    left: 105%;
+    background: #f3e9e9;
+    mat-option:hover{
+        background: #9e9494;
+    }
+}
